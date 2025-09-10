@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+   http://www.springframework.org/schema/beans     
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd
+   http://www.springframework.org/schema/mvc
+   http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
+	<!-- 
+		類似於在config.java 部屬 @Import(EmployeeConfig.class);也對@Configuration 以掃描過
+		@Componet-scan( base-package = "employee" )，配置.xml 時再重複掃描一次  <context:component-scan base-package="employee" />	
+	-->
+	<bean name="employeeConfig" class="employee.config.EmployeeConfig" />
+	
+	<!--  LocalValidatiorFactoryBean 的作用在 @Controller；嚴格說是作用在 webmvc 上 -->
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+	<context:component-scan base-package="controller" />	
+	<context:annotation-config />
+	
+	<mvc:annotation-driven />
+	<!-- springmvc 原本的 配置  -->
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	
+</beans>
