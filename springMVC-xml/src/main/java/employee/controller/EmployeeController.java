@@ -8,7 +8,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import employee.model.Employee;
 import employee.service.EmployeeService;
@@ -31,7 +30,7 @@ public class EmployeeController {
 			return "employee_form";				
 		}
 		// 新增
-		service.createAndAdd(emp);
+		service.addEmployee(emp);
 		return "redirect:/form_success.html";
 		
 	}

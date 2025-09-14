@@ -1,7 +1,6 @@
 package mvc;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.ViewResolver;
@@ -15,9 +14,8 @@ import employee.config.EmployeeConfig;
 
 @EnableWebMvc
 @Import( {EmployeeConfig.class})
-@ComponentScan(basePackages = {"controller"})
 @Configuration
-public class MyWebConfig implements WebMvcConfigurer {
+public class WebMvcConfig implements WebMvcConfigurer {
 	
 	// 等於 app-context.xml 的 <beans> 配置
 	

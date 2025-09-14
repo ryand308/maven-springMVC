@@ -8,11 +8,11 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import employee.config.EmployeeConfig;
-import mvc.MyWebConfig;
+import mvc.WebMvcConfig;
 
 @SpringJUnitConfig(classes = {EmployeeConfig.class})
 @WebAppConfiguration
-@ContextConfiguration(classes = { MyWebConfig.class })
+@ContextConfiguration(classes = { WebMvcConfig.class })
 public class MvcApplication {
 	
 	@Autowired

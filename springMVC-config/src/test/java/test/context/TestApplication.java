@@ -6,6 +6,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import employee.config.EmployeeConfig;
+import rest.RestConfig;
 
 @SpringJUnitConfig(classes = {EmployeeConfig.class})
 public class TestApplication {

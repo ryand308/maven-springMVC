@@ -24,9 +24,7 @@ public class EmployeeService {
 	private BasicExtraDao<Employee, Long> exDao;
 	
 	@Transactional
-	public void createAndAdd(Employee emp) {
-		
-		exDao.createSql();
+	public void addEmployee(Employee emp) {
 		
 		dao.add(emp);
 	}

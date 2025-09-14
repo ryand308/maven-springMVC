@@ -1,5 +1,6 @@
 package employee.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import jakarta.validation.constraints.Email;
@@ -7,7 +8,9 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public class Employee {
+public class Employee implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	//@Id primary key
 	private Long empId;

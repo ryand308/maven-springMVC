@@ -1,4 +1,4 @@
-package controller;
+package employee.controller;
 
 import java.util.Map;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/gener")
-public class GeneralControll {
+public class GeneralController {
 
 	@RequestMapping("/home")
 	public String getHome() {
