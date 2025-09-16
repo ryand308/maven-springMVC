@@ -6,24 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.DataComponent;
+
 import employee.util.ConnectUitility;
 
 @Configuration
 @ComponentScan( basePackages = {"employee"})
+@Import(DataComponent.class)
 @EnableTransactionManagement
 public class EmployeeConfig {
 
 	@Autowired
-	private ConnectUitility connectUtil;
+	private DataComponent data;
 	
 	@Bean
 	public JdbcTemplate getSpringJdbcTemplate() {		
-		return new JdbcTemplate(connectUtil.getSpringDataSource());
+		return new JdbcTemplate(getDataSource());
 	}
 	
 	@Bean
@@ -37,10 +41,9 @@ public class EmployeeConfig {
 	}
 	
 	@Bean
-	public DataSource getDataSource() {
+	public DataSource getDataSource() {		
 		
-		DataSource ds = connectUtil.getBasicDataSource();
-		return ds;
+		return data.getDataSource();
 	}
 	
 }

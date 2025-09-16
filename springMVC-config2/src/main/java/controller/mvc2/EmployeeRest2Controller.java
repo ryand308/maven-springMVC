@@ -1,4 +1,4 @@
-package rest;
+package controller.mvc2;
 
 import java.util.List;
 
@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import employee.model.Employee;
 import employee.service.EmployeeService;
 
 @RestController
-public class RestGeneralController {
+@RequestMapping("/rest")
+public class EmployeeRest2Controller {
+	
 	@Autowired
 	EmployeeService service;
 	
@@ -20,16 +21,9 @@ public class RestGeneralController {
 		return "Hello Rest";
 	}
 	
-	//Spring Framework (非 Spring Boot) 裡，無 JSON 序列化的支援
-	
-	@RequestMapping("/employeeList")
-	public String employeeList() {
+	@RequestMapping(value="/employeeList")
+	public List<?> employeeList() {
 		
-		List<Employee> list = (List<Employee>)service.findAllEmployee();
-		String empList = "";
-		for(Employee emp : list) 
-			empList += emp.toString() + "<br/>";
-		
-		return empList;
+		return service.findAllEmployee();
 	}
 }

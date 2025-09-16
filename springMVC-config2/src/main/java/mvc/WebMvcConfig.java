@@ -1,20 +1,23 @@
 package mvc;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import config.DataBaseConfig;
 import employee.config.EmployeeConfig;
 
 
 @EnableWebMvc
-@Import( {EmployeeConfig.class})
 @Configuration
+@ComponentScan( basePackages = {"controller.mvc"})
+@Import( {EmployeeConfig.class, DataBaseConfig.class})
 public class WebMvcConfig {
 	
 	// 等於 app-context.xml 的 <beans> 配置
@@ -30,5 +33,8 @@ public class WebMvcConfig {
 		return bean;
 	}
 	
-	
+	@Bean
+	public LocalValidatorFactoryBean localValidatorFactoryBean() {
+		return new LocalValidatorFactoryBean();
+	}
 }

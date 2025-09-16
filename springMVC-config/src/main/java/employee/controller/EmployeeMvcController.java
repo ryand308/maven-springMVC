@@ -1,7 +1,5 @@
 package employee.controller;
 
-import java.time.LocalDateTime;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +12,8 @@ import employee.model.Employee;
 import employee.service.EmployeeService;
 
 @Controller
-@RequestMapping("/emp")
-public class EmployeeController {
+@RequestMapping("/mvc")
+public class EmployeeMvcController {
 
 	@Autowired
 	private EmployeeService service;
@@ -44,7 +42,7 @@ public class EmployeeController {
 		// spring 會自動對應 html 的 from 物件的變數名稱；方便搭配 dao。
 		System.out.println(emp);
 		
-		service.createAndAdd(emp);
+		service.add(emp);
 		
 		return "redirect:/form_success.html";
 	}
@@ -66,5 +64,7 @@ public class EmployeeController {
 
 		return "redirect:/form_success.html";
 	}
+	
+
 }
 

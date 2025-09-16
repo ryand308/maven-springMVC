@@ -1,4 +1,4 @@
-package mvc;
+package mvc3;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -8,7 +8,7 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletRegistration;
 
 
-public class WebMvcApplicationInitializer implements WebApplicationInitializer {
+public class WebThirdApplicationInitializer implements WebApplicationInitializer {
 
 	@Override
 	public void onStartup(ServletContext servletContext) {
@@ -19,12 +19,12 @@ public class WebMvcApplicationInitializer implements WebApplicationInitializer {
 	 
 		// Load Spring web application configuration
 		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-		context.register(WebMvcConfig.class);
+		context.register(WebThymeleafConfig.class);
 
 		// Create and register the DispatcherServlet
 		DispatcherServlet servlet = new DispatcherServlet(context);
-		ServletRegistration.Dynamic registration = servletContext.addServlet("app", servlet);
+		ServletRegistration.Dynamic registration = servletContext.addServlet("app3", servlet);
 		registration.setLoadOnStartup(1);
-		registration.addMapping("/app/*");
+		registration.addMapping("/app3/*");
 	}
 }
