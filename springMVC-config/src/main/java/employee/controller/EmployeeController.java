@@ -13,7 +13,7 @@ import employee.service.EmployeeService;
 
 @Controller
 @RequestMapping("/mvc")
-public class EmployeeMvcController {
+public class EmployeeController {
 
 	@Autowired
 	private EmployeeService service;
