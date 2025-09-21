@@ -14,8 +14,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.DataComponent;
 
-import employee.util.ConnectUitility;
-
 @Configuration
 @ComponentScan( basePackages = {"employee"})
 @Import(DataComponent.class)

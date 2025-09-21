@@ -5,20 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/general.css">
 </head>
 <body>
-<style>
-* {
-	margin: 20px;
-}
-body {
-    justify-items: center;
-    text-align: center;
-}
-</style>
 
 
-	<form action="../update" method="post">
+	<form action="${pageContext.request.contextPath}/app/mvc/update" method="post">
 		<label for="name">Name:</label><br>
 		<input type="text" id="name" name="name" placeholder="${emp.name}" value="${emp.name}"><br/>
 		<label for="email">email:</label><br>

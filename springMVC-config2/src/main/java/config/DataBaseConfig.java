@@ -27,7 +27,7 @@ public class DataBaseConfig {
 			
 		// build schema
 		data.createSchema();
-		// new path of url 
+		// give DataSource
 		DataSource ds = data.getDataSource();
 		
 		// create table 

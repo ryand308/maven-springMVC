@@ -8,7 +8,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import employee.config.EmployeeConfig;
-import mvc.WebMvcConfig;
+import web.conifg.WebMvcConfig;
 
 @SpringJUnitConfig(classes = {EmployeeConfig.class})
 @WebAppConfiguration

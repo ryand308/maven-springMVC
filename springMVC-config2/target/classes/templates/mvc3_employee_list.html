@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/resources/css/table.css}">
+</head>
+<body>
+
+	<table>
+		<thead>
+			<tr>
+				<th>no.</th>
+				<th>name</th>
+				<th>email</th>
+				<th>salary</th>
+				<th>date</th>
+				<th>update</th>
+				<th>remove</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="emp : ${list}">
+				<td th:text="${emp.empId}"></td>
+				<td th:text="${emp.name}"></td>
+				<td th:text="${emp.email}"></td>
+				<td th:text="${emp.salary}"></td>
+				<td th:text="${emp.date}"></td>
+				<td><input type="submit" value="更新" /></td>
+				<td><input type="submit" value="刪除" /></td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

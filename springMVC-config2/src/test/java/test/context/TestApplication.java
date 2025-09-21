@@ -6,7 +6,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import employee.config.EmployeeConfig;
-import mvc2.WebSecondConfig;
+import web.conifg.WebSecondConfig;
 
 @SpringJUnitConfig(classes = {EmployeeConfig.class})
 public class TestApplication {
