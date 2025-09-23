@@ -23,7 +23,7 @@ public class EmployeeConfig {
 	
 	@Bean
 	public JdbcTemplate getSpringJdbcTemplate() {		
-		return new JdbcTemplate(connectUtil.getSpringDataSource());
+		return new JdbcTemplate(getDataSource());
 	}
 	
 	@Bean

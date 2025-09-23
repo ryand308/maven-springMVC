@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,6 +41,8 @@ table {
 		</tbody>
 	</table>
 	
-	<script type="text/javascript" src="../../resources/js/parameter_value.js"></script>
+	<s:url value="/resources/js/parameter_value.js" var="javascript" />
+	
+	<script type="text/javascript" src="${javascript}"></script>
 </body>
 </html>
