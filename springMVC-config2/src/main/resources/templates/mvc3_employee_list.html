@@ -17,6 +17,7 @@
 				<th>date</th>
 				<th>update</th>
 				<th>remove</th>
+				<th>info</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,11 +27,15 @@
 				<td th:text="${emp.email}"></td>
 				<td th:text="${emp.salary}"></td>
 				<td th:text="${emp.date}"></td>
-				<td><input type="submit" value="更新" /></td>
-				<td><input type="submit" value="刪除" /></td>
+				<td><button th:onclick="|updateEmp(${emp.empId})|">更新</button></td>
+				<td><button th:onclick="|deleteEmp(${emp.empId})|">刪除</button></td>
+				<td><button th:onclick="|infoEmp(${emp.empId})|">信息</button></td>
 			</tr>
 		</tbody>
 	</table>
-
+<!-- let url = document.getElementById("update1").formAction -->
+	<script type="module" th:src="@{/resources/js/employee_mvc3_list.js}">
+	
+	</script>
 </body>
 </html>

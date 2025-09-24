@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +10,9 @@
 </head>
 <body>
 
+<c:url value="/app/mvc/update" var="update"></c:url>
 
-	<form action="${pageContext.request.contextPath}/app/mvc/update" method="post">
+	<form action="${update}" method="post">
 		<label for="name">Name:</label><br>
 		<input type="text" id="name" name="name" placeholder="${emp.name}" value="${emp.name}"><br/>
 		<label for="email">email:</label><br>

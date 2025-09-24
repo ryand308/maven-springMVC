@@ -1,5 +1,7 @@
 package controller.mvc;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,15 +38,22 @@ public class EmployeeController {
 		return "employee_update";		
 	}
 	
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@RequestMapping("/save")
 	public String getSave(Employee emp) {
 		
-		// spring 會自動對應 html 的 from 物件的變數名稱；方便搭配 dao。
 		System.out.println(emp);
 		
-		service.add(emp);
+		Optional<Employee> optional = Optional.of(emp);
+		if(optional.stream().allMatch(e -> e.getName() == null)) {
+			
+			return "employee_form";
+		}
+		else {
+			service.add(emp);
+			
+			return "redirect:/form_success.html";
+		}
 		
-		return "redirect:/form_success.html";
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)

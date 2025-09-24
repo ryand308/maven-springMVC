@@ -3,6 +3,8 @@ package web.conifg;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.format.FormatterRegistry;
+import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -39,6 +41,13 @@ public class WebSecondConfig implements WebMvcConfigurer{
 	    registry.addResourceHandler("/rs/**")
 	            .addResourceLocations("/resources/css/", "/resources/js/"); // "classpath:/resources/"
 	    
+	}
+	
+	@Override
+	public void addFormatters(FormatterRegistry registry) {
+		DateTimeFormatterRegistrar registrar = new DateTimeFormatterRegistrar();
+		registrar.setUseIsoFormat(true);
+		registrar.registerFormatters(registry);
 	}
 	
 	

@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.resource.VersionResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -39,7 +38,7 @@ public class WebMvcConfig {
 	public LocalValidatorFactoryBean localValidatorFactoryBean() {
 		return new LocalValidatorFactoryBean();
 	}
-	
+
 
 
 }
