@@ -10,6 +10,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,7 +39,7 @@ public class General3Controller {
 	@RequestMapping("/msg/**")
 	public String getMessage(Model model) {
 		
-		model.addAttribute("message", "hello Thymeleaf, 中文");
+		model.addAttribute("message", "<p>hello Thymeleaf, 中文</p>");
 		
 		return "mvc3_message";
 	}
@@ -81,7 +83,9 @@ public class General3Controller {
 	
 	@RequestMapping("/handle")
 	@ResponseBody
-	public HttpEntity<Employee> handle() {
+	public HttpEntity<Employee> handle(@RequestHeader("HOST")String host) {
+		
+		System.out.println(host);
 		
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.set("myResponseHeader", "MyValue");	
@@ -92,4 +96,9 @@ public class General3Controller {
 		return new HttpEntity<Employee>( emp, responseHeaders);
 	}
 	
+	@GetMapping("/footer")
+	public String footer() {
+		
+		return "mvc3_footer";
+	}
 }

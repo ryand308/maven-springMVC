@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -52,7 +53,7 @@ public class Employee3Controller {
 	public String getMerge(Employee emp) {
 		
 		Optional<Employee> optional = Optional.of(emp);
-		Stream<Employee> stream = optional.stream().peek(e -> System.out.println(e));
+		Stream<Employee> stream = optional.stream().peek(e -> System.out.println("add: " + e));
 		
 		if(stream.allMatch(e -> e.getName() == null)) {
 			
@@ -68,7 +69,7 @@ public class Employee3Controller {
 	public String getUpdate(@PathVariable("id") Long id, Employee emp, Model model) {	
 			
 		Optional<Employee> optional = Optional.of(emp);
-		Stream<Employee> stream = optional.stream().peek(e -> System.out.println(e));
+		Stream<Employee> stream = optional.stream().peek(e -> System.out.println("update: " + e));
 		
 		if(stream.allMatch(e -> e.getEmpId() == null)) {
 			

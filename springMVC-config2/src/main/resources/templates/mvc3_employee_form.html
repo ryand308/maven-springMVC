@@ -7,7 +7,7 @@
 </head>
 <body>
 
-	<form  method="post">
+	<form  method="post">		
 		<table>
 			<thead>
 				<tr>
@@ -17,23 +17,26 @@
 			<tbody th:object="${employee}">
 				<tr>
 					<th>Name:</th>
-					<td><input type="text" th:value="*{name}" name="name" required></td>
+					<td><input type="text" th:value="*{name}" name="name" th:placeholder="*{name}" prequired></td>
 				</tr>
 				<tr>
 					<th>Email:</th>
-					<td><input type="text" th:value="*{email}" name="email" required></td>
+					<td><input type="text" th:attr="value=*{email}, placeholder=*{email}" name="email" required></td>
 				</tr>
 				<tr>
 					<th>Salary:</th>
 					<td><input type="number" th:value="*{salary}" name="salary" required></td>
 				</tr>
 				<tr>
-					<td><input type="hidden" th:value="*{empId}" name="empId" /></td>
-					<td><input type="submit" value="change"></td>
+					<td colspan="2">
+						<input type="hidden" th:value="*{empId}" name="empId" />
+						<input type="submit" value="change">									
+					</td>
 				</tr>
 			</tbody>
 		</table>	
 	</form>
-
+	
+	<div th:insert="~{mvc3_footer :: about}"></div>
 </body>
 </html>

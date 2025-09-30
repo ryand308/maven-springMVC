@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import "general.css";
+@import "footer.css";
 
 table, th, td {
   /* border: 1px solid; */

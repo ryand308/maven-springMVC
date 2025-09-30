@@ -21,7 +21,7 @@ public class WebThirdApplicationInitializer implements WebApplicationInitializer
 		// Load Spring web application configuration
 		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
 		context.register(WebThymeleafConfig.class);
-		context.setServletContext(servletContext);
+
 
 		// Create and register the DispatcherServlet
 		DispatcherServlet servlet = new DispatcherServlet(context);

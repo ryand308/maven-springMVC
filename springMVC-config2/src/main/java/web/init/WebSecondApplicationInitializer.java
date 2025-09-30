@@ -17,7 +17,7 @@ public class WebSecondApplicationInitializer implements WebApplicationInitialize
 		// Load Spring web application configuration
 		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
 		context.register(WebSecondConfig.class);
-		context.setServletContext(servletContext);
+
 
 		// Create and register the DispatcherServlet
 		DispatcherServlet servlet = new DispatcherServlet(context);

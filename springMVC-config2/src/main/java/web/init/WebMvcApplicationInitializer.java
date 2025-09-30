@@ -18,7 +18,7 @@ public class WebMvcApplicationInitializer implements WebApplicationInitializer {
 		// Load Spring web application configuration
 		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
 		context.register(WebMvcConfig.class);
-		context.setServletContext(servletContext);
+
 
 		// Create and register the DispatcherServlet
 		DispatcherServlet servlet = new DispatcherServlet(context);

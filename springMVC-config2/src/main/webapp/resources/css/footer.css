@@ -1,0 +1,28 @@
+@charset "UTF-8";
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
+/* footer*/
+.footer
+{
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
+.footer h4
+{
+    margin-bottom: 25px;
+    margin-top: 20px;
+    font-weight: 600px;
+}
+.icons .fa
+{
+	color: #f3f3f3;
+    margin: 0 22px;
+    cursor: pointer;
+    padding: 18px 0;
+    font-size: 30px;
+}
+
+.icons .fa:hover {
+	color: #000;
+}
