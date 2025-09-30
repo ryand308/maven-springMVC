@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{flexible ::common_header(_,~{})}">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body >
+	
+	<h3 th:text="#{welcome}"></h3>
+	
+	<!--1. 表示；自帶參數 -->
+	<div th:replace="~{flexible :: frag(${'variable'}, ${10})}"></div>
+	
+	<!--2. 表示； controller 傳參數 -->
+	<div th:replace="~{flexible :: frag(one=${v1}, two=${v2})}"></div>
+	
+	<!--2.1 表示； controller 傳參數  -->
+	<div th:replace="~{flexible :: frag(${v1}, ${v2})}" ></div>
+	
+	
+	<!-- th:remove attribute: (all, tag, body, all-but-first or none). -->
+	<h1 th:remove="${v1 != null}? all: none">hello employee controller</h1>
+	<h1 th:remove="${v2 == null}? all: none">hello employee controller</h1>
+	
+	<!-- Local Variables  -->
+	<div th:with="var1=${v1 + ' 彼得'}, var2=${v2 + ' 帕克'}">
+		<h3 th:text="${var1}"></h3>
+		<h3 th:text="${var2}"></h3>
+	</div>
+	
+
+	
+	<!-- inlining 內連-->
+	<h3>Hello! [[${v1}]] - [[${v2}]]</h3>
+	
+	
+</body>
+</html>

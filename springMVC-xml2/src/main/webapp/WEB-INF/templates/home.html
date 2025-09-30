@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{flexible ::common_header(~{::title},~{::link})}">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- 繼承 ::title, ::link  <title> <link>的標籤 -->
+<link rel="stylesheel" type="text/css" href="#">
+</head>
+<body>
+
+	<h1 th:text="'Welcome to thymeleaf'"></h1>
+	<h3 th:text="${msg}"></h3>
+	<a th:href="@{/app2/gener/hello}">employeeController</a>
+	
+</body>
+</html>

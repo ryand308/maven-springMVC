@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="common_header(title,links)">
+<meta charset="UTF-8">
+<title th:replace="${title}">thymeleaf 網頁部屬</title>
+
+<link rel="stylesheet" type="text/css" th:href="@{/app2/rs/basic.css}">
+<link rel="shortcut icon" th:href="@{/app2/rs/vite.svg}">
+<script type="text/javascript" th:src="@{/app2/rs/empty.js}"></script>
+
+<th:block th:replace="${links}" />
+</head>
+
+<body>
+	
+	
+	<div th:fragment="frag(one, two)">
+		
+		<p th:text="${one} + ' - ' + ${two}"></p>
+		
+	</div>
+
+</body>
+</html>

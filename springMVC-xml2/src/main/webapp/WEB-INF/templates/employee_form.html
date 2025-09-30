@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{flexible :: common_header(_,~{::link})}">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/app2/rs/table.css}">
+</head>
+<body>
+
+	<form method="post">
+		<h2>Employee Register</h2>
+		<table>
+			<tbody th:object="${employee}">
+				<tr>
+					<th>員工姓名：</th>
+					<td><input type="text" name="name" th:value="*{name}" required/></td>
+				</tr>
+				<tr>
+					<th>電子郵件：</th>
+					<td><input type="email" name="email" th:value="*{email}" required/></td>
+				</tr>
+				<tr>
+					<th>薪資：</th>
+					<td><input type="number" name="salary" th:value="*{salary}" required/></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="hidden" name="empId" th:value="*{empId}">
+						<input type="submit" value="提交"/>
+						<input type="reset" value="重填" />
+					</td>					
+				</tr>			
+			</tbody>
+		</table>
+	</form>
+
+</body>
+</html>

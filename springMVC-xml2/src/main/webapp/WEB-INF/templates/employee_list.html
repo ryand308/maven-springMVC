@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/app2/rs/basic.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/app2/rs/table.css}">
+<link rel="shortcut icon" th:href="@{/app2/rs/vite.svg}">
+</head>
+<body>
+
+	<table>
+		<thead>
+			<tr>
+				<th>no.</th>
+				<th>name</th>
+				<th>email</th>
+				<th>salary</th>
+				<th>date</th>
+				<th>update</th>
+				<th>remove</th>
+				<th>info</th>
+			</tr>
+		</thead>
+		<form>
+			<tbody>
+				<tr th:each=" emp: ${list}">
+					<td>[[${empStat.count}]]</td>
+					<td>[[${emp.name}]]</td>
+					<td>[[${emp.email}]]</td>
+					<td>[[${emp.salary}]]</td>
+					<td th:text="${#temporals.format(emp.date, 'yyyy年MMMdd日 HH:mm')}"></td>
+					<td><input type="submit" th:formaction="@{/app2/emp/update/{id}(id=${emp.empId})}" value="更新"></td>
+					<td><input type="submit" th:formaction="@{/app2/emp/{id}/delete(id=${emp.empId})}" value="刪除"></td>
+					<td><a th:href="@{/app2/emp/info?empId={id}(id=${emp.empId})}">📜</a></td>
+				</tr>
+			</tbody>
+		</form>
+	</table>
+
+</body>
+</html>
