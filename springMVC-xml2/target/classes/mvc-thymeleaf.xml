@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+   http://www.springframework.org/schema/beans     
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd
+   http://www.springframework.org/schema/mvc
+   http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
+
+		<!-- 將 model & controller 分開掃描 -->
+	<import resource="classpath:employee-beans.xml"  />
+	<context:component-scan base-package="controller.thymeleaf" />
+	
+	<mvc:annotation-driven />
+	
+	<mvc:resources mapping="/rs/**" location="classpath:static/css/, classpath:static/js/, classpath:static/images/" />
+	
+	<!-- thymeleaf 完整配置參考官網 https://www.thymeleaf.org/doc/tutorials/3.1/thymeleafspring.html#spring-mvc-configuration-->
+ 
+	<!-- 1. Thymeleaf 模板解析器 -->
+	<bean id="templateResolver" class="org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver">
+		<!-- 指定檔案路徑 -->
+		<property name="prefix" value="/WEB-INF/templates/" />
+		<property name="suffix" value=".html" />
+		<!-- 模板模式：HTML -->
+		<property name="templateMode" value="HTML" />
+		<!-- 編碼 -->
+		<property name="characterEncoding" value="UTF-8" />
+		<!-- 開發時可設為 false，避免 cache -->
+		<property name="cacheable" value="false" />
+	</bean>
+
+	<!-- 2. SpringTemplateEngine -->
+	<bean id="templateEngine" class="org.thymeleaf.spring6.SpringTemplateEngine">
+		<property name="templateResolver" ref="templateResolver" />
+		<property name="enableSpringELCompiler" value="true" />
+	</bean>
+
+	<!-- 3. ThymeleafViewResolver -->
+	<bean id="viewResolver" class="org.thymeleaf.spring6.view.ThymeleafViewResolver">
+		<property name="templateEngine" ref="templateEngine" />
+		<property name="characterEncoding" value="UTF-8" />
+		<property name="contentType" value="text/html; charset=UTF-8" />
+	</bean>	
+	
+	<!-- 4. messageSource -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" >
+		<property name="basename" value="messages" />
+	</bean>
+	
+	
+</beans>

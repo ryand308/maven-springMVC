@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/resources/css/general.css}">
+</head>
+<body>
+
+	<h1 th:text="'Welcome to thymeleaf'"></h1>
+	
+	<ul>
+		<li><a th:href="@{/index.html}">首頁</a></li>
+		<li><a th:href="@{/app3/gener/msg(lang=zh_TW)}">msg 中文</a></li>
+		<li><a th:href="@{/app3/gener/msg(lang=en_US)}">msg 英文</a></li>
+		<li><a th:href="@{/app3/gener/msg(lang=ja_JP)}">msg 日文</a></li>
+		<li><a th:href="@{/app3/gener/params(value1=1, value2='winner')}">參數測試</a></li>		
+	</ul>
+		<a th:href="@{/app3/mvc/{id}/object(id=1)}">object 1</a>
+		
+	
+</body>
+</html>

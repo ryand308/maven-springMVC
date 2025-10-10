@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"	
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+   http://www.springframework.org/schema/beans     
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd
+   http://www.springframework.org/schema/tx 
+   http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+   
+   <!-- 
+		類似於在config.java 部屬 @Import(EmployeeConfig.class);也對@Configuration 以掃描過
+		@Componet-scan( base-package = "employee" )，配置.xml 時再重複掃描一次  <context:component-scan base-package="employee" />
+	   ========================================================================================================			
+		<import resource="employee-beans.xml"/> 是將employee所有的容器：包含@Controller、@Service等，配置在 xml 內部才適用
+	-->
+   <bean name="employeeConfig" class="employee.config.EmployeeConfig" />		
+    <context:annotation-config />   
+   
+   
+   <import resource="classpath:database-beans.xml" />
+   
+   
+   <bean id="springJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+   		<constructor-arg name="dataSource" ref="basicDataSource"></constructor-arg>
+   </bean>
+   
+   <bean id="springNamedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+   		<constructor-arg name="dataSource" ref="basicDataSource"></constructor-arg>
+   </bean>
+   
+   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+   		<constructor-arg name="dataSource" ref="basicDataSource" ></constructor-arg>
+   </bean>
+   
+   <tx:annotation-driven transaction-manager="transactionManager" />
+   
+</beans>

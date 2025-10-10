@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/resources/css/table.css}">
+</head>
+<body>
+
+	<div id="paramForm"></div>
+	<br />
+
+	<table>
+		<tbody>
+			<tr>
+				<th>id</th>
+				<th>name</th>
+			</tr>
+			<tr th:each=" entry : ${map}" >
+				<td th:text="${entry.key}"></td>
+				<td th:text="${entry.value}"></td>
+			</tr>
+		</tbody>
+		<a href="?value1=10&value2=Alice">帶入參數</a>
+	</table>
+
+	<script type="text/javascript" th:src="@{/resources/js/parameter_value.js}"></script>
+</body>
+</html>

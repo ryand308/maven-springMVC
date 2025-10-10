@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/resources/css/table.css}">
+</head>
+<body>
+
+	<form  method="post">		
+		<table>
+			<thead>
+				<tr>
+					<th colspan="2">Employee register</th>
+				</tr>
+			</thead>
+			<tbody th:object="${employee}">
+				<tr>
+					<th>Name:</th>
+					<td><input type="text" th:value="*{name}" name="name" th:placeholder="*{name}" prequired></td>
+				</tr>
+				<tr>
+					<th>Email:</th>
+					<td><input type="text" th:attr="value=*{email}, placeholder=*{email}" name="email" required></td>
+				</tr>
+				<tr>
+					<th>Salary:</th>
+					<td><input type="number" th:value="*{salary}" name="salary" required></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="hidden" th:value="*{empId}" name="empId" />
+						<input type="submit" value="change">									
+					</td>
+				</tr>
+			</tbody>
+		</table>	
+	</form>
+	
+	<div th:insert="~{mvc3_footer :: about}"></div>
+</body>
+</html>
