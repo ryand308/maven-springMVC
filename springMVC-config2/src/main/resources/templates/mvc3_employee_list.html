@@ -21,7 +21,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="emp : ${list}" th:class="${empStat.odd}? 'odd'">				
+			<tr th:each="emp : ${list}" th:class="${empStat.odd}? 'odd':'even'">				
 				<td th:text="${emp.empId}"></td>
 				<td th:text="${emp.name}"></td>
 				<td th:text="${emp.email}"></td>

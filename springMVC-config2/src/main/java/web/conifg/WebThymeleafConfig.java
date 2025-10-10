@@ -13,6 +13,7 @@ import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean;
 import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -99,7 +100,8 @@ public class WebThymeleafConfig implements WebMvcConfigurer{
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(localeChangeInterceptor());
+        registry.addInterceptor(localeChangeInterceptor());    
+        
     }
  	
 	// validation
@@ -117,4 +119,16 @@ public class WebThymeleafConfig implements WebMvcConfigurer{
 		return new HashMap<>();
 	}
 
+	// Cross-Origin Resource Sharing (CORS) 跨域請求
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		// TODO Auto-generated method stub
+		WebMvcConfigurer.super.addCorsMappings(registry);
+		
+//		registry.addMapping("/**").allowedOrigins("http://localhost:8080");  // 接受的網域名稱；指定允許存取你的資源的來源（網域）
+		
+	}
+	
+	
+	
 }

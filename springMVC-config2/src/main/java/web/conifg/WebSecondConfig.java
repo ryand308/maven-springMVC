@@ -8,10 +8,12 @@ import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import ceptor.MyInterceptor;
 import config.DataBaseConfig;
 import employee.config.EmployeeConfig;
 
@@ -43,12 +45,23 @@ public class WebSecondConfig implements WebMvcConfigurer{
 	    
 	}
 	
+	// format 格式
 	@Override
 	public void addFormatters(FormatterRegistry registry) {
 		DateTimeFormatterRegistrar registrar = new DateTimeFormatterRegistrar();
 		registrar.setUseIsoFormat(true);
 		registrar.registerFormatters(registry);
 	}
+
+	// interceptor 攔截器
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		// test life's cycle of intercepter
+		registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**"); // 在 mvc2 下的所有路徑
+		
+		WebMvcConfigurer.super.addInterceptors(registry);
+	}
+	
 	
 	
 }
